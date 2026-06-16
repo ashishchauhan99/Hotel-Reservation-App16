@@ -1,0 +1,42 @@
+<p>reservation-form works!</p>
+
+<button [routerLink]="['']">Home</button>
+
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label>Check-In: </label>
+        <input type="date" formControlName="checkInDate">
+        <!-- ?.toched means if checkInDate is not null and user has at least once tries to put some date
+         ?.invalid is a shortcut in which means if not null then this object is availalbe after the ? sign-->
+        <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+              Check-In Date required 
+        </div>
+    </div>
+
+    <div>
+        <label>Check-Out: </label>
+        <input type="date" formControlName="checkOutDate">
+    </div>
+
+    <div>
+        <label>Guest name: </label>
+        <input type="text" formControlName="guestName">
+        <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+              Guest name is required 
+        </div>
+    </div>
+
+    <div>
+        <label>Email: </label>
+        <input type="email" formControlName="guestEmail">
+    </div>
+
+    <div>
+        <label>Room Number: </label>
+        <input type="number" formControlName="roomNumber">
+    </div>
+
+    <button type="submit" [disabled]="reservationForm.invalid">submit</button>
+
+</form>
