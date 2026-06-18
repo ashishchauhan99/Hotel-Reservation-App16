@@ -11,6 +11,8 @@ import { RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink
+],exports: [
+  HomeComponent
 ]
 })
 export class HomeModule { }

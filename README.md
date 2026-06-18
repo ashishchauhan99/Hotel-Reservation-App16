@@ -13,6 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 --------------
 - **ngTemplate**
 - **Route and ActivatedRoute**
+- **One module including the other module**
 
 ## Development server
 
