@@ -7,28 +7,32 @@
             *ngIf="reservations.length; else noReservation">
             <thead class="table-dark">
                 <tr>
+                    <th class="text-center">Actions</th>
                     <th>ID</th>
                     <th>Check-In</th>
                     <th>Check-Out</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Room-No</th>
-                    <th class="text-center">Actions</th>
+                    <th>Room-No</th>                    
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let reservation of reservations; index as i">
+                    <td class="text-center">
+                        <button class="btn btn-danger btn-sm" (click)="deleteReservations(reservation)">
+                            Remove
+                        </button>
+                        <button class="btn btn-primary btn-sm ms-2" (click)="editReservation(reservation)"
+                                [routerLink]="['/edit', reservation.id]">
+                            Edit
+                        </button>
+                    </td>
                     <td>{{ reservation.id }}</td>
                     <td>{{ reservation.checkInDate }}</td>
                     <td>{{ reservation.checkInDate | date:'dd.MM.yyyy' }}</td>
                     <td>{{ reservation.guestName}}</td>
                     <td>{{ reservation.guestEmail}}</td>
                     <td>{{ reservation.roomNumber}}</td>
-                    <td class="text-center">
-                        <button class="btn btn-danger btn-sm" (click)="deleteReservations(reservation)">
-                            Remove
-                        </button>
-                    </td>
                 </tr>
             </tbody>
         </table>

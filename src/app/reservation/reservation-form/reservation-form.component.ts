@@ -21,7 +21,7 @@ export class ReservationFormComponent implements OnInit {
    */
   constructor(private formBuilder: FormBuilder,
     private reservationService: ReservationService,
-    private router: Router, private ActivatedRoute: ActivatedRoute) {
+    private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -38,6 +38,15 @@ export class ReservationFormComponent implements OnInit {
       guestEmail: ['', [Validators.required, Validators.email]], //multiple validator can be submitted
       roomNumber: ['', Validators.required]
     });
+
+    let reservationId = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if (reservationId) {
+      let reservation = this.reservationService.getReservation(reservationId);
+      if (reservation) {
+        this.reservationForm.patchValue(reservation);
+      }
+    }
   }
 
   setAction(value: string) {
@@ -48,14 +57,18 @@ export class ReservationFormComponent implements OnInit {
     if (this.reservationForm.valid) {
       console.log("valid");
 
-      /**
+      let reservationId = this.activatedRoute.snapshot.paramMap.get('id');
+      let reservation: Reservation = this.reservationForm.value;
+      if (reservationId) {
+        this.reservationService.updateReservation(reservationId, reservation);
+      } else {
+        /**
        * We could also create a Reservation object here manually by accessing the value from
        * checkInDate, checkOutDate and others. 
        * However this.reservationForm.value gives us a handy way to do this.
        */
-      let reservation: Reservation = this.reservationForm.value;
-      this.reservationService.addReservation(reservation);
-
+        this.reservationService.addReservation(reservation);
+      }
     }
 
     if (this.action === 'submit') {

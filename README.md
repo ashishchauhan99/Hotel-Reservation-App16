@@ -1,5 +1,5 @@
 # HotelReservationApp16
-
+This project demostrate a CRUD hotel reservation functionality.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
 ## Examples
@@ -10,7 +10,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - **ReactiveForm and ReactiveFormValidation**
 - **redering submit button based on form state**
 - **localStorage**
+--------------
 - **ngTemplate**
+- **Route and ActivatedRoute**
 
 ## Development server
 

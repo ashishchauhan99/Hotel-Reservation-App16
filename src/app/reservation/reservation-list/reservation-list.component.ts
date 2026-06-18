@@ -22,4 +22,7 @@ export class ReservationListComponent implements OnInit {
     this.reservationService.deleteReservation(reservation.id);
   }
 
+  editReservation(reservation: Reservation) {
+
+  }
 }
