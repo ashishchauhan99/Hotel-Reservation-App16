@@ -2,44 +2,54 @@
 
 <p>reservation-form works!</p>
 
-<button [routerLink]="['']">Home</button>
+<button class="btn btn-primary" [routerLink]="['']">Home</button>
 
 <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
 
-    <div>
-        <label>Check-In: </label>
-        <input type="date" formControlName="checkInDate">
-        <!-- ?.toched means if checkInDate is not null and user has at least once tries to put some date
+    <div class="row">
+        <div class="col">
+            <label class="form-label">Check-In: </label>
+            <input class="form-control" type="date" formControlName="checkInDate">
+            <!-- ?.toched means if checkInDate is not null and user has at least once tries to put some date
          ?.invalid is a shortcut in which means if not null then this object is availalbe after the ? sign-->
-        <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
-              Check-In Date required 
+            <small class="text-danger"
+                *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+                Check-In Date required
+            </small>
+        </div>
+
+        <div class="col">
+            <label class="form-label">Check-Out: </label>
+            <input class="form-control" type="date" formControlName="checkOutDate">
         </div>
     </div>
 
-    <div>
-        <label>Check-Out: </label>
-        <input type="date" formControlName="checkOutDate">
-    </div>
+    <div class="row">
+        <div class="col">
+            <label class="form-label">Guest name: </label>
+            <input class="form-control" type="text" formControlName="guestName">
+            <small class="text-danger"
+                *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+                Guest name is required
+            </small>
+        </div>
 
-    <div>
-        <label>Guest name: </label>
-        <input type="text" formControlName="guestName">
-        <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
-              Guest name is required 
+        <div class="col">
+            <label class="form-label">Email: </label>
+            <input class="form-control" type="email" formControlName="guestEmail">
         </div>
     </div>
 
-    <div>
-        <label>Email: </label>
-        <input type="email" formControlName="guestEmail">
+    <div class="row">
+        <div class="col">
+            <label class="form-label">Room Number: </label>
+            <input class="form-control" type="number" formControlName="roomNumber">
+        </div>
     </div>
 
-    <div>
-        <label>Room Number: </label>
-        <input type="number" formControlName="roomNumber">
-    </div>
-
-    <button type="submit" [disabled]="reservationForm.invalid" (click)="setAction('submit')">save</button>
-    <button type="submit" [disabled]="reservationForm.invalid" (click)="setAction('submitExit')">save & Exit</button>
+    <button class="btn btn-primary" type="submit" [disabled]="reservationForm.invalid"
+        (click)="setAction('submit')">save</button>
+    <button class="btn btn-primary" type="submit" [disabled]="reservationForm.invalid"
+        (click)="setAction('submitExit')">save & Exit</button>
 
 </form>
