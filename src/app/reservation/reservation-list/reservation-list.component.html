@@ -1,9 +1,10 @@
 <div class="container">
-    
-<button [routerLink]="['']">Home</button>
 
-    <div class="container mt-3">        
-        <table class="table table-striped table-bordered table-hover align-middle mt-4">
+    <button [routerLink]="['']">Home</button>
+
+    <div class="container mt-3">
+        <table class="table table-striped table-bordered table-hover align-middle mt-4"
+            *ngIf="reservations.length; else noReservation">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -31,5 +32,9 @@
                 </tr>
             </tbody>
         </table>
+
+        <ng-template #noReservation>
+            <p> No reservation availalbe</p>
+        </ng-template>
     </div>
 </div>

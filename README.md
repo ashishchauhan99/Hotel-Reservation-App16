@@ -10,6 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - **ReactiveForm and ReactiveFormValidation**
 - **redering submit button based on form state**
 - **localStorage**
+- **ngTemplate**
 
 ## Development server
 
