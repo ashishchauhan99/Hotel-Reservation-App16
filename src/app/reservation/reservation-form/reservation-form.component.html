@@ -37,6 +37,7 @@
         <input type="number" formControlName="roomNumber">
     </div>
 
-    <button type="submit" [disabled]="reservationForm.invalid">submit</button>
+    <button type="submit" [disabled]="reservationForm.invalid" (click)="setAction('submit')">save</button>
+    <button type="submit" [disabled]="reservationForm.invalid" (click)="setAction('submitExit')">save & Exit</button>
 
 </form>

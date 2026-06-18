@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ReservationFormComponent implements OnInit {
 
+  action: string = '';
   reservationForm: FormGroup = new FormGroup({});
 
   /**
@@ -39,6 +40,10 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
+  setAction(value: string) {
+    this.action = value;
+  }
+
   onSubmit() {
     if (this.reservationForm.valid) {
       console.log("valid");
@@ -52,7 +57,15 @@ export class ReservationFormComponent implements OnInit {
       this.reservationService.addReservation(reservation);
 
     }
-    this.router.navigate(['/list'])
+
+    if (this.action === 'submit') {
+      // reset the value
+      this.reservationForm.reset();
+    } else if (this.action === 'submitExit') {
+      // navigate away
+      this.router.navigate(['/list'])
+    }
+
   }
-  
+
 }
